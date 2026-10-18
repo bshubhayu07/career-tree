@@ -37,3 +37,10 @@ ENV/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# C Build Artifacts & Binaries
+*.exe
+*.o
+*.obj
+career_recommendation.txt
+Presentation_Defense_Guide.pdf

@@ -1,5 +1,7 @@
 # 🌳 CareerTree — Interactive Binary Decision Tree Career Advisor
 
+[![C99](https://img.shields.io/badge/C-C99-00599C.svg?logo=c&logoColor=white)](https://en.wikipedia.org/wiki/C99)
+[![GCC](https://img.shields.io/badge/GCC-15.2%2B-brightgreen.svg)](https://gcc.gnu.org/)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.36%2B-FF4B4B.svg?logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![Matplotlib](https://img.shields.io/badge/Matplotlib-3.8%2B-11557c.svg)](https://matplotlib.org/)
@@ -98,34 +100,53 @@ Level 1: Root Decision (Technical/Systems vs Creative/Human-Centric)
 
 ## 🚀 Getting Started
 
-### Prerequisites
-- Python **3.10** or higher
-- Git
-
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/bshubhayu07/career-tree.git
 cd career-tree
 ```
 
-### 2. Create and Activate Virtual Environment (Optional, Recommended)
+---
+
+### Option A: Pure C Implementation (High-Performance CLI)
+
+**Prerequisites:** GCC or Clang (supporting C99/C11) and `make` (optional).
+
 ```bash
-# Windows
+# Compile using Makefile
+make
+
+# Or compile directly with GCC
+gcc -Wall -Wextra -O2 -std=c99 main.c tree.c -o career_tree.exe
+
+# Launch the interactive CLI advisor
+./career_tree.exe
+```
+
+**CLI Menu Capabilities:**
+- `[1]` Interactive Career Assessment (with LIFO Undo mechanism)
+- `[2]` ASCII Visual Tree Map & Structural Explorer
+- `[3]` Career Pathway Finder & DFS Backtracking Path Tracer
+- `[4]` DSA Traversal Demonstrations (BFS Queue & DFS Stack)
+- `[5]` Automated C Unit Test Suite
+- `[6]` Export Assessment Report to Text Dossier
+
+---
+
+### Option B: Python & Streamlit Web UI
+
+**Prerequisites:** Python 3.10+
+
+```bash
+# Create and activate virtual environment (optional)
 python -m venv venv
-venv\Scripts\activate
+venv\Scripts\activate   # On Windows
+# source venv/bin/activate  # On Linux/macOS
 
-# macOS / Linux
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### 3. Install Dependencies
-```bash
+# Install dependencies
 pip install -r requirements.txt
-```
 
-### 4. Launch the Application
-```bash
+# Launch the interactive Streamlit web dashboard
 streamlit run app.py
 ```
 
@@ -135,12 +156,27 @@ Open your browser at `http://localhost:8501`.
 
 ## 🧪 Running Unit Tests
 
-Run the automated test suite verifying node counts, balance, paths, and traversals:
+### Pure C Test Suite
+Run the automated C unit test suite verifying node counts, tree balance, leaf heights, and BFS/DFS traversals:
+```bash
+# Run via CLI menu
+./career_tree.exe
+# Select option 5: Run Automated Unit Tests
+```
+Output:
+```text
+=== RUNNING SYSTEM UNIT TESTS ===
+[TEST 1] Verifying 31 Total Nodes & Perfect Balance... [PASS] (31 nodes, h=4)
+[TEST 2] Verifying 16 Distinct Leaf Nodes at Depth 4... [PASS] (16 leaves)
+[TEST 3] Verifying DFS Backtracking Path Search for All 16 Paths... [PASS] (16/16 verified)
+[TEST 4] Verifying BFS FIFO Queue Memory Invariants... [PASS] (Queue empty, 0 leaks)
+ALL UNIT TESTS PASSED IN 0.000 SECONDS!
+```
 
+### Python Test Suite
 ```bash
 python test_tree.py
 ```
-
 Output:
 ```text
 ...
@@ -156,13 +192,17 @@ OK
 
 ```text
 career-tree/
+├── main.c                     # Interactive C CLI interface, LIFO undo stack, & unit tests
+├── tree.c                     # Pure C binary tree implementation, BFS/DFS, & memory management
+├── tree.h                     # C data structures (DecisionNode, CareerProfile, NodeStack, Queue)
+├── Makefile                   # GCC build automation (clean, build, test)
 ├── app.py                     # Streamlit frontend & interactive dashboard
-├── tree.py                    # Binary decision tree algorithms, nodes, & career profiles
-├── test_tree.py               # Unit tests verifying tree properties & all 16 paths
+├── tree.py                    # Python binary decision tree implementation
+├── test_tree.py               # Python unit tests
 ├── requirements.txt           # Python dependencies
-├── .gitignore                 # Standard Python/Streamlit gitignore
-├── README.md                  # Detailed documentation
-├── Mini_Project_Report.docx   # Academic project report
+├── .gitignore                 # Git ignore rules for C binaries and Python cache
+├── README.md                  # Comprehensive documentation
+├── Mini_Project_Report.docx   # Academic mini-project report
 ├── CareerTree_Project_Overview.pdf # 5-Page system overview & architecture document
 └── screenshots/               # Application UI previews
 ```
