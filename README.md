@@ -1,13 +1,10 @@
-# 🌳 CareerTree — Interactive Binary Decision Tree Career Advisor
+# 🌳 CareerTree — Pure C Binary Decision Tree Career Advisor
 
 [![C99](https://img.shields.io/badge/C-C99-00599C.svg?logo=c&logoColor=white)](https://en.wikipedia.org/wiki/C99)
 [![GCC](https://img.shields.io/badge/GCC-15.2%2B-brightgreen.svg)](https://gcc.gnu.org/)
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.36%2B-FF4B4B.svg?logo=streamlit&logoColor=white)](https://streamlit.io/)
-[![Matplotlib](https://img.shields.io/badge/Matplotlib-3.8%2B-11557c.svg)](https://matplotlib.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-**CareerTree** is an interactive, educational career recommendation platform built on a deterministic **Binary Decision Tree** data structure from fundamental computer science principles. Rather than relying on opaque black-box machine learning models, CareerTree uses explicit node hierarchies, binary question branches (`yes`/`no`), and recursive traversal algorithms to guide users to tailored tech careers with full mathematical transparency.
+**CareerTree** is a high-performance, deterministic career recommendation system implemented in pure **C (C99)** using fundamental **Binary Decision Tree** data structures. Rather than relying on opaque black-box machine learning models, CareerTree uses explicit heap-allocated pointer hierarchies, binary question branches (`yes`/`no`), LIFO undo stacks, linked FIFO queues, and recursive traversal algorithms to guide users to tailored tech careers with full mathematical and algorithmic transparency.
 
 ---
 
@@ -31,13 +28,13 @@
   - *Technical Product Manager (TPM)*
   - *Developer Relations (DevRel) & Technical Advocate*
   - *EdTech Instructional Designer & Learning Specialist*
-- **📊 Interactive Tree Visualization:** High-resolution graph rendered with Matplotlib displaying the entire binary tree, with real-time path highlighting for user traversals or selected careers.
-- **⚡ Asymptotic Efficiency:** Fast $\mathcal{O}(h) = \mathcal{O}(\log_2 N)$ decision inference time complexity ($h = 4$).
+- **📊 ASCII Structural Tree Map & Visualizer:** Terminal-rendered tree visualizer displaying the full binary tree structure with branch paths and node indices.
+- **⚡ Asymptotic Efficiency:** Ultra-fast $\mathcal{O}(h) = \mathcal{O}(\log_2 N)$ decision inference time complexity ($h = 4$).
 - **💼 Rich Career Profiles:** Every leaf includes category tags, match rationales, skill matrices, industry toolchains, salary compensation bands, market growth forecasts, certifications, and realistic workday descriptions.
 - **🗺️ 3-Stage Learning Roadmaps:** Structured learning paths from *Foundational* to *Intermediate* and *Advanced* for every role.
-- **📥 One-Click Career Dossier Export:** Download customized assessment reports in clean Markdown format.
-- **📚 Searchable Career Catalog:** Filter and search all 16 pathways by domain, tools, and required decision paths.
-- **🧠 Educational DSA Explorer:** Live interactive demonstration of tree traversal algorithms (**BFS Level-Order**, **Pre-Order DFS**, and **In-Order DFS**).
+- **📥 One-Click Career Dossier Export:** Export full customized career assessment reports directly to text file (`career_recommendation.txt`).
+- **↩️ LIFO Interactive Undo Stack:** Step backward to modify any decision choice during traversal without restarting the session.
+- **🧠 Educational DSA Explorer:** Live interactive demonstration of tree traversal algorithms (**BFS Level-Order via Linked Queue**, **Pre-Order DFS**, and **In-Order DFS**).
 
 ---
 
@@ -106,64 +103,56 @@ git clone https://github.com/bshubhayu07/career-tree.git
 cd career-tree
 ```
 
----
+### 2. Compilation & Build
 
-### Option A: Pure C Implementation (High-Performance CLI)
-
-**Prerequisites:** GCC or Clang (supporting C99/C11) and `make` (optional).
+**Prerequisites:** GCC or Clang (supporting C99/C11 standard) and `make` (optional).
 
 ```bash
-# Compile using Makefile
+# Option 1: Compile using Makefile
 make
 
-# Or compile directly with GCC
+# Option 2: Compile directly with GCC
 gcc -Wall -Wextra -O2 -std=c99 main.c tree.c -o career_tree.exe
+```
 
-# Launch the interactive CLI advisor
+---
+
+### 3. Launching the Advisor
+
+Run the compiled executable:
+
+```bash
+# Windows
+.\career_tree.exe
+
+# Linux / macOS
 ./career_tree.exe
 ```
 
-**CLI Menu Capabilities:**
-- `[1]` Interactive Career Assessment (with LIFO Undo mechanism)
-- `[2]` ASCII Visual Tree Map & Structural Explorer
-- `[3]` Career Pathway Finder & DFS Backtracking Path Tracer
-- `[4]` DSA Traversal Demonstrations (BFS Queue & DFS Stack)
-- `[5]` Automated C Unit Test Suite
-- `[6]` Export Assessment Report to Text Dossier
-
----
-
-### Option B: Python & Streamlit Web UI
-
-**Prerequisites:** Python 3.10+
-
-```bash
-# Create and activate virtual environment (optional)
-python -m venv venv
-venv\Scripts\activate   # On Windows
-# source venv/bin/activate  # On Linux/macOS
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Launch the interactive Streamlit web dashboard
-streamlit run app.py
-```
-
-Open your browser at `http://localhost:8501`.
+**CLI Interactive Capabilities:**
+- `[1]` **Interactive Career Assessment:** Step-by-step decision traversal with an active LIFO Undo stack.
+- `[2]` **ASCII Tree Hierarchy Visualizer:** Complete visual blueprint of all 31 nodes and binary branch trajectories.
+- `[3]` **Career Pathway Finder:** DFS backtracking path tracer across all 16 career leaf nodes.
+- `[4]` **DSA Traversal Engine:** Live BFS (FIFO linked queue) and DFS (recursive / stack) traversals.
+- `[5]` **Automated Unit Test Suite:** In-memory validation of invariants, balance factor, leaf counts, and memory cleanliness.
+- `[6]` **Export Career Dossier:** Exports the completed assessment report and metrics to `career_recommendation.txt`.
+- `[0]` **Exit & Clean Shutdown:** Safely triggers `free_tree(root)` to free heap allocations with 0 memory leaks.
 
 ---
 
 ## 🧪 Running Unit Tests
 
-### Pure C Test Suite
-Run the automated C unit test suite verifying node counts, tree balance, leaf heights, and BFS/DFS traversals:
+Run the integrated automated C test suite verifying node counts, tree balance, leaf heights, and BFS/DFS queue invariants:
+
 ```bash
-# Run via CLI menu
-./career_tree.exe
-# Select option 5: Run Automated Unit Tests
+# Via Makefile
+make test
+
+# Or run the executable directly and choose Option 5
+.\career_tree.exe
 ```
-Output:
+
+**Expected Test Output:**
 ```text
 === RUNNING SYSTEM UNIT TESTS ===
 [TEST 1] Verifying 31 Total Nodes & Perfect Balance... [PASS] (31 nodes, h=4)
@@ -171,19 +160,6 @@ Output:
 [TEST 3] Verifying DFS Backtracking Path Search for All 16 Paths... [PASS] (16/16 verified)
 [TEST 4] Verifying BFS FIFO Queue Memory Invariants... [PASS] (Queue empty, 0 leaks)
 ALL UNIT TESTS PASSED IN 0.000 SECONDS!
-```
-
-### Python Test Suite
-```bash
-python test_tree.py
-```
-Output:
-```text
-...
-----------------------------------------------------------------------
-Ran 3 tests in 0.000s
-
-OK
 ```
 
 ---
@@ -195,12 +171,8 @@ career-tree/
 ├── main.c                     # Interactive C CLI interface, LIFO undo stack, & unit tests
 ├── tree.c                     # Pure C binary tree implementation, BFS/DFS, & memory management
 ├── tree.h                     # C data structures (DecisionNode, CareerProfile, NodeStack, Queue)
-├── Makefile                   # GCC build automation (clean, build, test)
-├── app.py                     # Streamlit frontend & interactive dashboard
-├── tree.py                    # Python binary decision tree implementation
-├── test_tree.py               # Python unit tests
-├── requirements.txt           # Python dependencies
-├── .gitignore                 # Git ignore rules for C binaries and Python cache
+├── Makefile                   # GCC build automation (all, clean, test)
+├── .gitignore                 # Git ignore rules for C binaries and build artifacts
 ├── README.md                  # Comprehensive documentation
 ├── Mini_Project_Report.docx   # Academic mini-project report
 ├── CareerTree_Project_Overview.pdf # 5-Page system overview & architecture document
