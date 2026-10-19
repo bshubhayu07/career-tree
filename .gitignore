@@ -42,5 +42,6 @@ desktop.ini
 *.exe
 *.o
 *.obj
+*.dll
 career_recommendation.txt
 Presentation_Defense_Guide.pdf

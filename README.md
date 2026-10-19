@@ -1,7 +1,8 @@
-# 🌳 CareerTree — Pure C Binary Decision Tree Career Advisor
+# 🌳 CareerTree — Binary Decision Tree Career Advisor (Pure C Engine + Streamlit GUI)
 
 [![C99](https://img.shields.io/badge/C-C99-00599C.svg?logo=c&logoColor=white)](https://en.wikipedia.org/wiki/C99)
 [![GCC](https://img.shields.io/badge/GCC-15.2%2B-brightgreen.svg)](https://gcc.gnu.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.36%2B-FF4B4B.svg?logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 **CareerTree** is a high-performance, deterministic career recommendation system implemented in pure **C (C99)** using fundamental **Binary Decision Tree** data structures. Rather than relying on opaque black-box machine learning models, CareerTree uses explicit heap-allocated pointer hierarchies, binary question branches (`yes`/`no`), LIFO undo stacks, linked FIFO queues, and recursive traversal algorithms to guide users to tailored tech careers with full mathematical and algorithmic transparency.
@@ -103,31 +104,45 @@ git clone https://github.com/bshubhayu07/career-tree.git
 cd career-tree
 ```
 
-### 2. Compilation & Build
+### 🌐 Quickstart: Launching the Streamlit Web Application
 
-**Prerequisites:** GCC or Clang (supporting C99/C11 standard) and `make` (optional).
+To straight up start the modern interactive web application:
 
-```bash
-# Option 1: Compile using Makefile
-make
+1. **Install Frontend Dependencies:**
+   ```bash
+   pip install streamlit matplotlib
+   ```
 
-# Option 2: Compile directly with GCC
-gcc -Wall -Wextra -O2 -std=c99 main.c tree.c -o career_tree.exe
-```
+2. **Launch the Streamlit App:**
+   ```bash
+   streamlit run app.py
+   ```
+
+> [!NOTE]
+> **Pure C Backend Under the Hood:** `app.py` automatically compiles `tree.c` into a native shared library (`tree.dll` on Windows / `tree.so` on Linux) using GCC and connects via **C Foreign Function Interface (`ctypes`)**. Every node, pointer dereference, and tree structure is executed in native C machine code!
+
+Your browser will automatically open at `http://localhost:8501`.
 
 ---
 
-### 3. Launching the Advisor
+### 🖥️ Alternative: Running the Pure C Terminal CLI
 
-Run the compiled executable:
+If you want to run the native C terminal program directly with zero Python dependencies:
 
-```bash
-# Windows
-.\career_tree.exe
+1. **Compile with GCC:**
+   ```bash
+   gcc -Wall -Wextra -O2 -std=c99 main.c tree.c -o career_tree.exe
+   # Or simply: make
+   ```
 
-# Linux / macOS
-./career_tree.exe
-```
+2. **Launch the Executable:**
+   ```bash
+   # Windows
+   .\career_tree.exe
+
+   # Linux / macOS
+   ./career_tree.exe
+   ```
 
 **CLI Interactive Capabilities:**
 - `[1]` **Interactive Career Assessment:** Step-by-step decision traversal with an active LIFO Undo stack.
@@ -172,6 +187,7 @@ career-tree/
 ├── tree.c                     # Pure C binary tree implementation, BFS/DFS, & memory management
 ├── tree.h                     # C data structures (DecisionNode, CareerProfile, NodeStack, Queue)
 ├── Makefile                   # GCC build automation (all, clean, test)
+├── app.py                     # Streamlit web GUI (binds to C engine via C-FFI ctypes)
 ├── .gitignore                 # Git ignore rules for C binaries and build artifacts
 ├── README.md                  # Comprehensive documentation
 ├── Mini_Project_Report.docx   # Academic mini-project report
