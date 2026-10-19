@@ -187,7 +187,6 @@ career-tree/
 ├── tree.c                     # Pure C binary tree implementation, BFS/DFS, & memory management
 ├── tree.h                     # C data structures (DecisionNode, CareerProfile, NodeStack, Queue)
 ├── Makefile                   # GCC build automation (all, clean, test)
-├── app.py                     # Streamlit web GUI (binds to C engine via C-FFI ctypes)
 ├── .gitignore                 # Git ignore rules for C binaries and build artifacts
 ├── README.md                  # Comprehensive documentation
 ├── Mini_Project_Report.docx   # Academic mini-project report
